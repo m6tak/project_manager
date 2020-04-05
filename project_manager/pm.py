@@ -25,8 +25,9 @@ def create_dirs(cfg, args):
     root  = cfg['root']
     proj_schema = cfg['proj_schema']
     repo_schema = cfg['repo_schema']
-    proj_path = proj_schema.format(root=root, tech=args.tech, proj_repo=args.project_name, proj_root=args.project_name)
-    repo_path = repo_schema.format(root=root, tech=args.tech, proj_repo=args.project_name)
+    repo_name = args.project_name if not args.repo_name else args.repo_name
+    proj_path = proj_schema.format(root=root, tech=args.tech, proj_repo=repo_name, proj_root=args.project_name)
+    repo_path = repo_schema.format(root=root, tech=args.tech, proj_repo=args.repo_name)
     print(proj_path)
     print(repo_path)
     try:
