@@ -17,11 +17,13 @@ This command generates following output:
 ```
 root
     |
-    | - {project_name} (repo folder)
+    |- {project_technology_name} (folder wher all related project are going to be stored)
         |
-        | - .git (optional)
-        | - readme.md (optional)
-        | - {project_name} (project root)
+        | - {project_name} (repo folder)
+            |
+            | - .git (optional)
+            | - readme.md (optional)
+            | - {project_name} (project root)
 ```
 
 # Configuration
