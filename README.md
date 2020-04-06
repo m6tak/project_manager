@@ -29,6 +29,7 @@ root
 ### Optional parameters
 * *--open_vsc*: runs shell `cd {path} && code .`
 * *--open_dir*: **windows only** runs shell `start {path}` ie. opens repo path in file explorer
+* *--repo_name*: lets you specify repository name diffrent than project name. If repository with that name exists new project will be added there
 
 # Configuration
 
