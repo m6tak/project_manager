@@ -11,13 +11,13 @@ def run():
         print("Project with that name already exists")
         exit(0)
 
-    if args.no_repo:
-        print("New {tech} project created: {path}".format(tech=args.tech, path=paths['proj']))
-    else:
-        print("New {tech} project created: {path}".format(tech=args.tech, path=paths['proj']))
+    print("New {tech} project created: {path}".format(tech=args.tech, path=paths['proj']))
+
+    if not args.no_repo:
         init_repo(paths['repo'], args.project_name)
         print("Git repository initialized with readme.md")
-        
+
+    create_custom_schemas(cfg, paths['repo'])
     additional_actions(args, paths['repo'])
         
 
@@ -35,7 +35,12 @@ def create_dirs(cfg, args):
     except FileExistsError:
         return None
 
-            
+def create_custom_schemas(cfg, repo_path):
+    for scheme in cfg['custom_schemas']:
+        try:
+            os.makedirs(repo_path + scheme)
+        except FileExistsError:
+            print("Failed to create {scheme}".format(scheme=scheme))
 
 def init_repo(repo_path, project_name):
     with open(repo_path + '\\readme.md', 'w') as readme:
