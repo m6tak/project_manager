@@ -1,20 +1,30 @@
 import json
 import os
 
+default_cfg = {
+    'root': os.path.join(os.path.expanduser('~'), "repositories"),
+    'proj_schema': "{root}\\{tech}\\{proj_repo}\\{proj_root}",
+    'repo_schema': "{root}\\{tech}\\{proj_repo}",
+        'custom_schemas': {
+            'default': [
+            "+\\docs"
+        ],
+        'my_custom_schema': [
+            "+\\custom_docs",
+            "~\\common\\services"
+        ],
+    },
+}
+
+
 def load():
-    cfg_path = os.path.join(os.path.expand_user('~'), '.project_manager/config.json')
+    cfg_path = os.path.join(os.path.expanduser('~'), os.path.join('.project_manager'))
     if not os.path.exists(cfg_path):
         os.makedirs(cfg_path)
-        default_cfg = {
-            'root': os.path.join(os.path.expanduser('~'), "repositories"),
-            'proj_schema': "{root}\\{tech}\\{proj_repo}\\{proj_root}",
-            'repo_schema': "{root}\\{tech}\\{proj_repo}",
-            'custom_schemas': [
-                'default': [],
-                'my_custom_schema': [],
-            ],
-        }
 
-    with open(cfg_path) as config_file:
+        with open(os.path.join(cfg_path, 'config.json'), 'w') as config_file:
+            config_file.write(json.dumps(default_cfg))
+
+    with open(os.path.join(cfg_path, 'config.json'), 'r') as config_file:
         return json.load(config_file)
 

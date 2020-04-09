@@ -18,7 +18,7 @@ def run():
         init_repo(paths['repo'], args.project_name)
         print("Git repository initialized with readme.md")
 
-    directory_manager.create_custom_schemas(cfg, args paths['repo'], paths['proj'])
+    directory_manager.create_custom_schemas(cfg, args, paths['repo'], paths['proj'])
     additional_actions(args, paths['repo'])
         
 
