@@ -12,7 +12,7 @@ def load():
             'custom_schemas': [
                 'default': [],
                 'my_custom_schema': [],
-            ]
+            ],
         }
 
     with open(cfg_path) as config_file:

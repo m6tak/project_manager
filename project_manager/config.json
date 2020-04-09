@@ -2,9 +2,12 @@
     "root": "C:\\Users\\48570\\Desktop\\projekty",
     "proj_schema": "{root}\\{tech}\\{proj_repo}\\{proj_root}",
     "repo_schema": "{root}\\{tech}\\{proj_repo}",
-    "custom_schemas": [
-        "\\docs\\api",
-        "\\docs\\somefolder\\otherfolder",
-        "\\somethingelse\\anything"
-    ]
+    "custom_schemas": {
+        "default": [],
+        "py_schema": [
+            "+\\docs",
+            "~\\common\\services",
+            "~\\common\\conf"
+        ]
+    }
 }

@@ -7,7 +7,7 @@ parser.add_argument('--no_repo', action='store_true', help='switch for git repo 
 parser.add_argument('--repo_name', action='store', help='repository name')
 parser.add_argument('--open_vsc', action='store_true', help='open repository with vs code')
 parser.add_argument('--open_dir', action='store_true', help='open repository in file explorer (windows only)')
-
+parser.add_argument('--schema', action='store', help='name of custom schema to use')
 
 def parse():
     return parser.parse_args()

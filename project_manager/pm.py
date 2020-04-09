@@ -2,11 +2,12 @@ import sys
 import os
 import common.services.config as config
 import common.services.arg_processor as arg_processor
+import common.directory_manager as directory_manager
 
 def run():
     cfg = config.load()
     args = arg_processor.parse()
-    paths = create_dirs(cfg, args)
+    paths = directory_manager.create_dirs(cfg, args)
     if paths is None:
         print("Project with that name already exists")
         exit(0)
@@ -17,30 +18,9 @@ def run():
         init_repo(paths['repo'], args.project_name)
         print("Git repository initialized with readme.md")
 
-    create_custom_schemas(cfg, paths['repo'])
+    directory_manager.create_custom_schemas(cfg, args paths['repo'], paths['proj'])
     additional_actions(args, paths['repo'])
         
-
-
-def create_dirs(cfg, args):
-    root  = cfg['root']
-    proj_schema = cfg['proj_schema']
-    repo_schema = cfg['repo_schema']
-    repo_name = args.project_name if args.repo_name is None else args.repo_name
-    proj_path = proj_schema.format(root=root, tech=args.tech, proj_repo=repo_name, proj_root=args.project_name)
-    repo_path = repo_schema.format(root=root, tech=args.tech, proj_repo=repo_name)
-    try:
-        os.makedirs(proj_path)
-        return {'proj': proj_path, 'repo': repo_path}
-    except FileExistsError:
-        return None
-
-def create_custom_schemas(cfg, repo_path):
-    for scheme in cfg['custom_schemas']:
-        try:
-            os.makedirs(repo_path + scheme)
-        except FileExistsError:
-            print("Failed to create {scheme}".format(scheme=scheme))
 
 def init_repo(repo_path, project_name):
     with open(repo_path + '\\readme.md', 'w') as readme:
