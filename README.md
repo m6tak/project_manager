@@ -1,5 +1,5 @@
 # project_manager
-project_manager is exactly what it says. Simple python tool that speeds up starting up your project by creating directory structure in organized way.
+project_manager is exactly what it says. Simple python tool that speeds up starting up your project by creating directory structure in organized way.  
 Just fire up your shell, run one command and get started :)
 
 # How does it work?
@@ -10,20 +10,20 @@ Just fire up your shell, run one command and get started :)
 * [] optional argument
 
 ```
-pm {project_name} {project_technology_name} [--repo_name NAME] [--no_repo] [--open_vsc] [--open_dir]
+pm {project_name} {project_technology_name} [--repo_name NAME] [--no_repo] [--schema NAME] [--open_vsc] [--open_dir]
 ```
 
-`pm my_project python` This command generates following output:
+`pm my_project python` generates following output:
 ```
 root
     |
-    |- python (folder wher all related project are going to be stored)
+    |- python (folder wher all related projects are going to be stored)
         |
         | - my_project (repo folder)
             |
             | - .git (optional)
             | - readme.md (optional)
-            | - my_project (project root)
+            | - my_project (project root, here goes all the code stuff)
 ```
 
 ### Optional parameters
@@ -68,11 +68,10 @@ It's located in your home directory in .project_manager folder
 
 ### Custom schemas
 Custom schema lets you create additional directory structure inside your repository.
-Just add paths you want do create to the array in your config file.
 Remember to add `\\` or `/` at the begining of your scheme as it gets appended to path exactly like you type it.
 * Add `+` to the beggining of the path if you want structure appended to repository folder
 * Add `~` to the beggining of the path if you want structure appended to project root folder
-* **NOTE**: `+` or `~` **MUST** be specified
+* **NOTE**: `+` or `~` **MUST** be specified  
 You can store any number of custom schemas you like and than just choose any with `--schema {NAME}` parameter
 ```
 {
@@ -89,8 +88,9 @@ You can store any number of custom schemas you like and than just choose any wit
 }
 ```
 
+
+If you dont specify schema with parameter, default one is used so you might want to leave it empty  
 Running `pm {project_name} {project_technology_name} --schema my_custom_schema` Will give following result:
-If you dont specify schema with parameter default one is used so you might want to leave it empty
 
 ```
 root
@@ -108,6 +108,8 @@ root
             | - custom_docs
 
 ```
+# Planned features
+* [ ] Add user defined commands to be run in the repository/project root
 
 # Requirements
 * **Python version:** 3.7
@@ -115,5 +117,17 @@ root
 ### Optional
 * git client
 * vs code
+
+# Installation
+You can find exe build [here](https://drive.google.com/open?id=13CdW9Mc5eTw8AvGQi_nhWaGs90GBXzbf)  
+If you want you can add it to path and use it this way:  
+`pm.exe ...`  
+I also included setup.bat which installs project_manager as shell command so you can do just  
+`pm ...`
+
+**Disclaimer** This was tested on windows ONLY.
+
+# Credits
+Thanks to @koflus for help with shell scripts and overall setup:)
 
 **Enjoy :)**
