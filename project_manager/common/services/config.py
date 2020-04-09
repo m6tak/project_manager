@@ -5,8 +5,8 @@ default_cfg = {
     'root': os.path.join(os.path.expanduser('~'), "repositories"),
     'proj_schema': "{root}\\{tech}\\{proj_repo}\\{proj_root}",
     'repo_schema': "{root}\\{tech}\\{proj_repo}",
-        'custom_schemas': {
-            'default': [
+    'custom_schemas': {
+        'default': [
             "+\\docs"
         ],
         'my_custom_schema': [
